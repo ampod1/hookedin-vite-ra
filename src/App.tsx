@@ -8,6 +8,7 @@ import buildHasuraProvider from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
 import { Admin, LegacyDataProvider, ListGuesser, Resource } from "react-admin";
 import CustomerList from "./components/bsc/CustomersList";
+import { Core_userList } from "./components/core/Core_userList";
 const headers = {
   "content-type": "application/json",
   "x-hasura-admin-secret": import.meta.env.VITE_HASURA_GRAPHQL_ADMIN_SECRET,
@@ -50,6 +51,9 @@ function App() {
       <ApolloProvider client={client}>
         <Admin dataProvider={dataProvider as any}>
           <Resource name="bsc_customer" list={CustomerList} />
+          <Resource name="core_user" list={Core_userList} />
+          <Resource name="user_types" />
+          
         </Admin>
       </ApolloProvider>
     </>
