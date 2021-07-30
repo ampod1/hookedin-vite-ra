@@ -2,15 +2,27 @@ import React from "react";
 import {
   Datagrid,
   DateField,
+  FieldProps,
   List,
   ListProps,
   NumberField,
   ReferenceField,
   TextField,
   useLocale,
+  useRecordContext,
 } from "react-admin";
 import { useMyDefaultStyles } from "../../../styles/default";
+import CoinIconSVG from "../../../svg/money.svg";
 
+const CoinsCounterField = (props: FieldProps) => {
+  const record = useRecordContext(props);
+  return (
+    <span>
+      {(+record.points_count).toLocaleString()}{" "}
+      <img src={CoinIconSVG} style={{ width: "1em" }} />
+    </span>
+  );
+};
 const LoyalPointHistoryList = (props: ListProps) => {
   const defaultClss = useMyDefaultStyles();
   const lang = useLocale();
@@ -22,11 +34,12 @@ const LoyalPointHistoryList = (props: ListProps) => {
           label="custom_root.main.code"
           source="code"
         />
-        <NumberField
+        <CoinsCounterField
           source="points_count"
           headerClassName={defaultClss.header}
           label="Points"
         />
+
         <ReferenceField
           source="customer_id"
           reference="bsc_customer"
