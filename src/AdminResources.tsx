@@ -24,6 +24,7 @@ const resources = [
   <Resource name="bsc_customer" list={CustomerList} />,
   <Resource name="bsc_customer_type" list={CustomerTypeList} />,
   <Resource name="core_user" list={UserList} />,
+  <Resource name="core_usertype" />,
   <Resource name="user_types" list={UsertypeList} />,
   <Resource
     name="loyal_point_history"
